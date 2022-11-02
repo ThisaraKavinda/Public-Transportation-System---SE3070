@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 
 // Routers
+import customerRoute from './Routes/customer.js';
 
 // Constants
 dotenv.config()
@@ -27,7 +28,6 @@ connection.once("open", () => {
 })
 
 // Routers use
-
-
+app.use("/customers", customerRoute)
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))
