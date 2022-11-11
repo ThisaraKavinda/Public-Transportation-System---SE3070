@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import QRCode from "react-qr-code";
 import Switch from "react-switch";
+import swal from "sweetalert";
 import Select from 'react-select'
 import {
     MDBBtn,
@@ -25,12 +27,36 @@ import UserFooter from '../components/UserFooter.js';
 import {FaMoneyBillAlt, FaBusAlt, FaBusinessTime}from 'react-icons/fa';
 import { IconContext } from "react-icons";
 
+import {isLoggedIn} from '../controllers/customer.js';
+
 import topupImage from '../img/topup.png';
 
 export default function UserDashboard() {
 
+    const navigate = useNavigate();
+
     const [toggleOneModal, setToggleOneModal] = useState(false);
     const [toggleTwoModal, setToggleTwoModal] = useState(false);
+
+    useEffect(() => {
+        // isLoggedIn()
+        // .then((res) => {
+        //   // console.log(res)
+        //   if (!res.isLoggedIn) {
+        //     swal({
+        //       title: "Error!",
+        //       text: "First you need to login to the system",
+        //       icon: 'error',
+        //       dangerMode: true,
+        //       button: false,
+        //     })
+        //     setTimeout(
+        //         () => navigate("/login"), 
+        //         1000
+        //     );
+        //   }
+        // })
+    }, [])
 
     return (
         <div>

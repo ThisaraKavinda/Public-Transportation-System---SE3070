@@ -15,6 +15,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function UserRegistration() {
 
+    const [type, setType] = useState(false);
+    const [name, setName] = useState("");
+    const [nic, setNic] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [repeatPass, setRepeatPass] = useState("");
+
     return (
         <section class="" style={{backgroundColor: "#7F8487"}}>
             <div class="container h-100">

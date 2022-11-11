@@ -3,7 +3,7 @@ import { verifyJWT} from '../Middlewear/auth.js';
 
 // Controllers
 import { 
-    addCustomer, customerLogIn, getSelectedCustomer, editCustomer, deleteCustomer
+    addCustomer, customerLogIn, getSelectedCustomer, editCustomer, deleteCustomer, isLoggedIn, topUpBalance, decrementBalance
     //  getAllCustomers, deleteCustomer, editCustomer, getSelectedCustomer,  getAllCustomersCount, logIn, getSelectedCustomerByNic
 } from '../controllers/customer.js';
 
@@ -17,5 +17,8 @@ router.get('/getSelectedCustomer', verifyJWT, getSelectedCustomer);
 // router.get('/getSelectedCustomerByNic/:nic',getSelectedCustomerByNic);
 // router.get('/getAllCustomersCount', getAllCustomersCount);
 router.post('/logIn',customerLogIn);
+router.post('/isLoggedIn',isLoggedIn);
+router.get('/topUpBalance/:id/:increment',topUpBalance);
+router.get('/decrementBalance/:id/:increment', decrementBalance);
 
 export default router;

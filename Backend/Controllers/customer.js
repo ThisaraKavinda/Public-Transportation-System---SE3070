@@ -156,6 +156,68 @@ export const deleteCustomer = async (req, res) => {
     return res.json(customer);
 }
 
+export const isLoggedIn = async (req, res) => {
+
+    let token = "";
+    if (req.body.token != undefined) 
+        token = req.body.token.split(' ')[1];
+
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                return res.json({ 
+                    isLoggedIn: false,
+                    message: "Failed to authenticate"
+                })
+            }
+            req.user= {};
+            req.user.id = decoded.id;
+            req.user.name = decoded.name;
+            return res.json({
+                isLoggedIn: true,
+                user: req.user
+            })
+        }) 
+    } else {
+        return res.json({
+            isLoggedIn: false,
+            message: "Invalid token"
+        })
+    }
+}
+
+export const topUpBalance = async (req, res) => {
+    const id = req.params.id;
+    const increment = req.params.increment;
+    let currentBalance;
+    await Customer.findById(id).then((res) => {
+        currentBalance = res.balance
+    })
+    let newBalance = currentBalance + increment;
+    await Customer.findByIdAndUpdate(id, { balance: newBalance }).then((food)=>{
+        res.json({success: true, items: food});
+    }).catch(err => {
+        console.error(err);
+        res.json({success: false, error: err});
+    })
+}
+
+export const decrementBalance = async (req, res) => {
+    const id = req.params.id;
+    const increment = req.params.increment;
+    let currentBalance;
+    await Customer.findById(id).then((res) => {
+        currentBalance = res.balance
+    })
+    let newBalance = currentBalance - increment;
+    await Customer.findByIdAndUpdate(id, { balance: newBalance }).then((food)=>{
+        res.json({success: true, items: food});
+    }).catch(err => {
+        console.error(err);
+        res.json({success: false, error: err});
+    })
+}
+
 // export const getAllCustomers = async (req, res) => {
 //     const customers = await CustomerModel.find({});
 //     res.send(customers);
