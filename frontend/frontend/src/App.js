@@ -4,7 +4,8 @@ import './App.css';
 import UserRegistration from './views/UserRegistation.js';
 import UserLogin from './views/UserLogin.js';
 import UserDashboard from './views/UserDashboard.js';
-import UserAccount from './views/UserAccount.js'
+import UserAccount from './views/UserAccount.js';
+import UserShedule from './views/UserShedule.js';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/login" element={<UserLogin />} />
         <Route exact path='/dashboard' element={<UserDashboard />} />
         <Route exact path='/userAccount' element={<UserAccount />} />
+        <Route exact path='/userShedule' element={<UserShedule />} />
       </Routes>
     </BrowserRouter>
   );

@@ -17,7 +17,7 @@ export default function UserNavBar() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#">Shedule</a>
+                        <a class="nav-link active text-light" aria-current="page" href="/userShedule">Shedule</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active text-light" href="#">Travel History</a>

@@ -6,6 +6,10 @@ import * as dotenv from 'dotenv';
 
 // Routers
 import customerRoute from './Routes/customer.js';
+import busRouter from './Routes/bus.js';
+import journeyRouter from './Routes/journey.js';
+import routeRouter from './Routes/route.js';
+import stopsRouter from './Routes/sheduleStops.js';
 
 // Constants
 dotenv.config()
@@ -28,6 +32,10 @@ connection.once("open", () => {
 })
 
 // Routers use
-app.use("/customers", customerRoute)
+app.use("/customers", customerRoute);
+app.use("/bus", busRouter);
+app.use("/journey", journeyRouter);
+app.use("/route", routeRouter);
+app.use("/stops", stopsRouter);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))

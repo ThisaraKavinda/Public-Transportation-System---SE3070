@@ -34,7 +34,7 @@ export const addCustomer = async (req, res) => {
             durationend: user.durationEnd,
             password: user.password, 
             balance: "0.00",
-            joinedDate: new Date().toISOString()
+            joinedDate: new Date()
         })
 
         await newCustomer.save()
